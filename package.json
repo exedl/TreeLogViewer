@@ -1,0 +1,28 @@
+{
+    "name": "TreeLogViewer",
+    "version": "1.0.0",
+    "description": "",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron .",
+        "dist": "electron-builder"
+    },
+    "keywords": [],
+    "author": "Exedl",
+    "devDependencies": {
+        "electron": "^17.1.0",
+        "electron-builder": "^22.14.13"
+    },
+    "dependencies": {
+        "iconv": "^3.0.1",
+        "iconv-lite": "^0.6.3",
+        "jquery": "^3.6.0",
+        "v8-compile-cache": "^2.3.0"
+    },
+    "build": {
+        "win": {
+            "target": "portable",
+            "icon": "build/icon.ico"
+        }
+    }
+}

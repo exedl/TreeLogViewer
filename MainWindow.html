@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="resources/fonts/Roboto/roboto.css">
+	<link rel="stylesheet" type="text/css" href="resources/fonts/Icons/icons.css">
+	<link rel="stylesheet" type="text/css" href="resources/styles/styles.css">
+	
+	<script src="resources/scripts/bootstrap-extensions.js"></script>
+	<script src="resources/scripts/ui.js"></script>
+</head>
+<body>
+	<div class="app">
+		<div class="header">
+			<div class="button open-file">
+				<i class="bi bi-folder2-open"></i> Load file
+			</div>
+
+			<div class="select">
+				<label for="">File encoding</label>
+				<div class="active" data-value="cp866">CP866</div>
+
+				<div class="options">
+					<div class="option" data-value="utf8">UTF8</div>
+					<div class="option selected" data-value="cp866">CP866</div>
+				</div>
+			</div>
+
+			<div class="close">
+				<i class="bi bi-x"></i>
+			</div>
+		</div>
+
+		<div class="content">
+			<div class="left">
+				<div class="table">
+					<div class="header">Name</div>
+					<div class="content all-files">
+						
+					</div>
+				</div>
+			</div>
+
+			<div class="right">
+				<div class="table odd">
+					<div class="header">
+						Search
+
+						<div class="button export">
+							<i class="bi bi-save-fill"></i> Export
+						</div>
+					</div>
+					<div class="content">
+						<div class="row search">
+							<input type="text" name="search" placeholder="Search file...">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		window.$ = window.jQuery = require('jquery');
+
+		$('.close').on('click', function(){
+		    window.ipcRenderer.send('close-app', '');
+		});
+
+		$('.open-file').on('click', function(){
+		    window.ipcRenderer.send('open-file', {encoding: $('.select .active').data('value')});
+		});
+
+		$('input[name="search"]').on('input', function(){
+			window.ipcRenderer.send('search', $(this).val());
+		});
+
+		$('.export').on('click', function(){
+			window.ipcRenderer.send('save-file', '');
+		});
+
+		$('.select .option').on('click', function(){
+			$('.select .option').removeClass('selected');
+			$(this).addClass('selected');
+
+			$('.select .active').html($(this).html());
+			$('.select .active').data('value', $(this).data('value'));
+		});
+
+		$(document).ready(function(){
+			window.ipcRenderer.on('parsed-files', (event, message) => {
+				$('.all-files').html('');
+				UI.print(message, 1);
+	        });
+
+			window.ipcRenderer.on('get-dir', (event, message) => {
+				UI.printSubDir(message);
+	        });
+
+			window.ipcRenderer.on('search', (event, message) => {
+				$('.search-result').remove();
+				UI.printSearchResults(message);
+	        });
+		});
+
+		$(document).on('click', '.row.folder', function(){
+			if ($(this).hasClass('opened')) {
+				$(this).removeClass('opened');
+				
+				UI.closeAllSub($(this).data('id'));
+			} else {
+				$(this).addClass('opened');
+				if ($('.row[data-parent="' + $(this).data('id') + '"]').length == 0) {
+					var path = [];
+					path.push(JSON.parse(decodeURIComponent($(this).data('name'))).name);
+
+					var $el = $(this);
+
+					var search = true;
+					while (search) {
+						var parent = $el.data('parent');
+						if (parent === 0) {
+							search = false;
+						} else {
+							path.unshift(JSON.parse(decodeURIComponent($('[data-id="' + parent + '"]').data('name'))).name);
+							$el = $('[data-id="' + parent + '"]');
+						}
+					}
+
+					window.ipcRenderer.send('get-dir', {
+						parent_id: $(this).data('id'),
+						dir: JSON.parse(decodeURIComponent($(this).data('name'))).name,
+						path: path.join('/'),
+						nesting: $(this).data('nesting'),
+						line: $(this).data('line')
+					});
+				}
+				$('.row[data-parent="' + $(this).data('id') + '"]').show();
+			}
+		});
+	</script>
+</body>
+</html>

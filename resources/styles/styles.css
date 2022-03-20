@@ -1,0 +1,276 @@
+body {
+	width: 970px;
+    height: 610px;
+	background: var(--bg-color);
+}
+
+html, body {
+	margin: 0;
+	width: 960px;
+	height: 600px;
+	font-family: 'Roboto', sans-serif;
+	color: var(--font-color);
+
+	background: transparent;
+}
+
+.app {
+	position: relative;
+	height: 100%;
+
+	background: var(--bg-color);
+	outline: 1px solid var(--font-color);
+
+	margin-top: 5px;
+    margin-left: 5px;
+    box-shadow: 0 0 10px 0px #0000004d;
+}
+
+.app:after {
+	position: absolute;
+	content: '';
+	width: 1px;
+	height: 100%;
+	top: 0;
+	left: 596px;
+	background: var(--main-color);
+}
+
+.app > .header {
+	position: relative;
+	display: flex;
+	height: 40px;
+	margin-top: 0;
+	background: var(--main-color);
+	padding: 0 20px;
+
+	-webkit-user-select: none;
+	-webkit-app-region: drag;
+}
+
+.app > .header > .button {
+	display: inline-block;
+	background: var(--button-color);
+    height: 40px;
+    line-height: 40px;
+    padding: 0 20px;
+    font-size: 12px;
+
+    cursor: pointer;
+    transition: .3s;
+
+    -webkit-app-region: no-drag;
+}
+
+.app > .header > .select {
+	position: relative;
+	display: block;
+    background: var(--button-color);
+    height: 40px;
+    padding: 0 20px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: .3s;
+    -webkit-app-region: no-drag;
+    margin-left: 5px;
+}
+
+.app > .header > .select > label {
+    display: block;
+	font-size: 10px;
+    margin-top: 6px;
+}
+
+.app > .header > .select > .active {
+	font-weight: bold;
+}
+
+.app > .header > .select > .options {
+	display: none;
+	position: absolute;
+    top: 40px;
+    z-index: 9;
+    left: 0;
+    width: 100%;
+    background: var(--main-color);
+    box-shadow: 0 5px 15px #0000002e;
+
+	transition: .3s;
+}
+
+.app > .header > .select > .options > .option {
+	padding: 5px 10px;
+
+	transition: .3s;
+}
+
+.app > .header > .select > .options > .option:hover {
+	background: var(--button-color);
+}
+
+.app > .header > .select:hover > .options {
+	display: block;
+
+	transition: .3s;
+}
+
+.app > .header > .close {
+	position: absolute;
+    width: 34px;
+    height: 40px;
+    font-size: 24px;
+    line-height: 40px;
+    text-align: center;
+    right: 20px;
+    top: 0;
+    background: var(--close-color);
+    color: #FFF;
+
+    cursor: pointer;
+    transition: .3s;
+
+    -webkit-app-region: no-drag;
+}
+
+.app > .header > .close:hover {
+	background: var(--close-hover-color);
+}
+
+.app > .header > .button:hover {
+	background: var(--button-color-hover);
+}
+
+.app > .header > .button > i {
+	font-size: 18px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.app > .content {
+	position: relative;
+	display: flex;
+	height: 550px;
+	padding-top: 10px;
+}
+
+.app > .content > div {
+	height: 550px;
+	overflow-y: auto;
+}
+
+.app > .content > .left {
+	width: 600px;
+}
+
+.app > .content > .right {
+	width: 360px;
+}
+
+.table {
+	user-select: none;
+}
+
+.table > .header {
+	position: relative;
+	height: 24px;
+	line-height: 24px;
+	padding: 0 30px;
+	font-size: 12px;
+	font-weight: 500;
+	background: var(--main-color);
+}
+
+.table > .header > .button {
+	position: absolute;
+    right: 30px;
+	display: inline-block;
+    background: var(--button-color);
+    padding: 0 10px;
+    font-weight: 400;
+
+    cursor: pointer;
+    transition: .3s;
+}
+
+.table > .header > .button:hover {
+	background: var(--button-color-hover);
+}
+
+.table > .content {
+
+}
+
+.table > .content > .row {
+	display: flex;
+	height: 24px;
+	line-height: 24px;
+	padding: 0 30px;
+	font-size: 12px;
+
+	cursor: pointer;
+}
+
+.table > .content > .row > .control {
+	margin-right: 10px;
+}
+
+.table > .content > .row > .control > i {
+	display: block;
+	font-size: 12px;
+
+	translate: .3s;
+}
+
+.table > .content > .row > .text > i {
+	font-size: 17px;
+    vertical-align: middle;
+    margin-right: 3px;
+}
+
+.table > .content > .row.folder > .text > i {
+	color: var(--folder-color);
+}
+
+.table > .content > .row.search {
+	padding: 0;
+}
+
+.table > .content > .row:nth-child(even) {
+	background-color: var(--button-color);
+}
+
+.table.odd > .content > .row:nth-child(even) {
+	background-color: var(--bg-color);
+}
+
+.table.odd > .content > .row:nth-child(odd) {
+	background-color: var(--button-color);
+}
+
+.table > .content > .row.opened > .control > i {
+	transform: rotate(90deg);
+}
+
+.table > .content > .row.search > input {
+	width: 100%;
+    border: none;
+    outline: none;
+    padding: 0 30px;
+    font-size: 12px;
+    background: var(--input-color);
+    border-bottom: 3px solid var(--main-color);
+}
+
+:root {
+	--bg-color: #FFFFFF;
+	--main-color: #DEDEDE;
+	--input-color: rgba(0, 0, 0, 0.005);
+	--button-color: rgba(0, 0, 0, 0.05);
+	--button-color-hover: rgba(0, 0, 0, 0.1);
+	--font-color: #3E3E3E;
+
+	--close-color: #f44336d6;
+	--close-hover-color: #f44336;
+
+	--folder-color: #FCD462;;
+}
