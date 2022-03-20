@@ -1,0 +1,54 @@
+Структура папок
+Серийный номер тома: 1075-9AA9
+C:.
+│   ENGINE REPAIR MANUAL.pdf
+│   tree_small.txt
+│   
+├───CHASSIS AND BODY REAIR MANUAL
+│       AUDIO & VISUAL SYSTEM.pdf
+│       BRAKE.pdf
+│       CLUTCH.pdf
+│       COMMUNICATION SYSTEM.pdf
+│       COOLING SYSTEM.pdf
+│       DIAGNOSTICS.pdf
+│       DRIVE SHAFT & PROPELLER SHAFT.pdf
+│       EMISSION CONTROL.pdf
+│       ENGINE CONTROL SYSTEM.pdf
+│       ENGINE HOOD & DOOR.pdf
+│       ENGINE MECHANICAL.pdf
+│       EXHAUST.pdf
+│       EXTERIOR AND INTERIOR TRIM.pdf
+│       FRONT SUSPENSION.pdf
+│       FUEL.pdf
+│       HEATER & AIR CONDITIONER.pdf
+│       IGNITION.pdf
+│       INSTRUMENT PANEL.pdf
+│       INTAKE.pdf
+│       INTRODUCTION.pdf
+│       LIGHTING.pdf
+│       LUBRICATION.pdf
+│       MANUAL TRANSMISSION  & TRANSAXLE.pdf
+│       PARKING BRAKE.pdf
+│       POWER STEERING.pdf
+│       PREPARATION.pdf
+│       REAR SUSPENSION.pdf
+│       SEAT - POWERED.pdf
+│       SEAT BELT.pdf
+│       SERVICE SPECIFICATIONS.pdf
+│       SLIDING ROOF OR CONVERTIBLE.pdf
+│       STARTING & CHARGING.pdf
+│       STEERING COLUMN.pdf
+│       SUPPLEMENTAL RESTRAINT SYSTEM.pdf
+│       THEFT DETERRENT & DOOR LOCK.pdf
+│       TIRE & WHEEL.pdf
+│       VEHICLE CONTROL SYSTEM.pdf
+│       WINDSHIELD, WINDOWGLASS & MIRROR.pdf
+│       WIPER & WASHER.pdf
+│       WIRING.pdf
+│       
+└───ELECTRICAL
+        ELECTRICAL WIRING - ALL.pdf
+        ELECTRICAL WIRING ROUTING.pdf
+        RELAY LOCATION.pdf
+        SYSTEM CIRCUITS.pdf
+        
