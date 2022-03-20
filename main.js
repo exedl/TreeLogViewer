@@ -78,7 +78,7 @@ ipc.on('open-file', (event, message) => {
 
                 var iconv = new Iconv(message.encoding, 'utf-8');
                 var buffer = iconv.convert(data);
-                data = buffer.toString('utf8').replace(/^.*?│/gm, '│');
+                data = buffer.toString('utf8').replace(/^.*?│/s, '│');
 
                 files = [];
 
