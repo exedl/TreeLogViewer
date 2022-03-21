@@ -76,9 +76,21 @@ ipc.on('open-file', (event, message) => {
                     return;
                 }
 
-                var iconv = new Iconv(message.encoding, 'utf-8');
-                var buffer = iconv.convert(data);
-                data = buffer.toString('utf8').replace(/^.*?│/s, '│');
+                if (message.encoding == 'utf-8') {
+                    data = data.replace(/^.*?│/s, '│');
+                } else {
+                    try {
+                        var iconv = new Iconv(message.encoding, 'utf-8');
+                        var buffer = iconv.convert(data);
+                        data = buffer.toString('utf8').replace(/^.*?│/s, '│');
+                    } catch (e) {
+                        dialog.showMessageBox(mainWindow, {
+                            message: 'Please check origin file encoding',
+                            type: 'error'
+                        });
+                        return;
+                    }
+                }
 
                 files = [];
 
